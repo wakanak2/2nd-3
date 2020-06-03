@@ -1,0 +1,28 @@
+<table class="table">
+		<tr><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
+
+		<tr>
+			<th>name</th>
+			<th><%= user.name %></th>
+		</tr>
+
+		<tr>
+			<th>introduction</th>
+			<th><%= user.introduction %></th>
+		</tr>
+</table>
+
+<div class="row">
+	<%= link_to '',edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id}" %>
+</div>
+
+<!-- エラーメッセージ表示-->
+<% if user.errors.any? %>
+	<h3><%= user.errors.count %>error occurrence</h3><!--エラーメッセ-->
+	<ul>
+		<% user.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+<% end %>
+<!-- エラーメッセージ表示-->
